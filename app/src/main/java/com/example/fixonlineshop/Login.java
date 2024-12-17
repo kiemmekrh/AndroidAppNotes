@@ -18,28 +18,28 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        db = new DatabaseHelper(this);
-        usernameInput = findViewById(R.id.username_input);
-        passwordInput = findViewById(R.id.password_input);
-        Button loginButton = findViewById(R.id.login_btn);
-        TextView clickableText = findViewById(R.id.clickable_text);
+                db = new DatabaseHelper(this);
+                usernameInput = findViewById(R.id.username_input);
+                passwordInput = findViewById(R.id.password_input);
+                Button loginButton = findViewById(R.id.login_btn);
+                TextView clickableText = findViewById(R.id.clickable_text);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = usernameInput.getText().toString();
-                String password = passwordInput.getText().toString();
+                loginButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String username = usernameInput.getText().toString();
+                        String password = passwordInput.getText().toString();
 
-                boolean isValidLogin = db.checkLogin(username, password);
-                if (isValidLogin) {
-                    Toast.makeText(Login.this, "Login successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login.this, Dashboard.class); //
-                    startActivity(intent);
-                    finish(); // Menutup aktivitas login agar tidak bisa kembali ke halaman login
-                } else {
-                    Toast.makeText(Login.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
-                }
-            }
+                        boolean isValidLogin = db.checkLogin(username, password);
+                        if (isValidLogin) {
+                            Toast.makeText(Login.this, "Login successful", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Login.this, Dashboard.class); //
+                            startActivity(intent);
+                            finish(); // Menutup aktivitas login agar tidak bisa kembali ke halaman login
+                        } else {
+                            Toast.makeText(Login.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
         });
 
         clickableText.setOnClickListener(new View.OnClickListener() {
